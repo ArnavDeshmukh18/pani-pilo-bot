@@ -20,7 +20,9 @@ messages = [
 ist = pytz.timezone("Asia/Kolkata")
 now = datetime.now(ist)
 
-if START_HOUR <= now.hour < END_HOUR:
+TEST_MODE = os.environ.get("TEST_MODE", "false").lower() == "true"
+
+if TEST_MODE or (START_HOUR <= now.hour < END_HOUR):
     bot = Bot(token=TOKEN)
     msg = random.choice(messages)
 
