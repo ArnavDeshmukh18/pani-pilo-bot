@@ -1,9 +1,9 @@
-name: Water Reminder Bot
+name: Water Reminder Bot (Test Mode)
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # Every 30 minutes (UTC)
-  workflow_dispatch:         # Allows manual run from Actions tab
+    - cron: "*/5 * * * *"   # Every 5 minutes (minimum GitHub allows)
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -23,8 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Water Reminder Bot
+      - name: Run Bot Script
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_IDS: ${{ secrets.CHAT_IDS }}
-        run: python water_reminder.py
+        run: python code.py
